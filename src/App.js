@@ -1,22 +1,25 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Home from "./Home";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
-import HeaderNav from "./Header/HeaderNav";
+import Forms from "./pages/Forms";
+import Schedule from "./pages/Schedule";
+import HeaderNav from "./Components/Header/HeaderNav";
+import Home from "./pages/Home";
+import MNVRecomenda from "./pages/MNVRecomenda";
 
 const App = () => {
   return (
-    <section>
-      <div className="space stars1">
-        <div className="space stars2">
-          <div className="space stars3">
-            <Router>
-              {/* <HeaderNav /> */}
-              <Home />
-            </Router>
-          </div>
-        </div>
-      </div>
+    <section style={{display: 'flex', justifyContent: 'space-between'}}>
+      <Router>
+        <HeaderNav />
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/forms" element={<Forms />} />
+          <Route exact path="/schedule" element={<Schedule />} />
+          <Route exact path="/mnvrecomenda" element={<MNVRecomenda />} />
+        </Routes>
+        <div style={{width: '5%'}}></div>
+      </Router>
     </section>
   );
 };
